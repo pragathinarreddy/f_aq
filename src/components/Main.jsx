@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import data from '../data.json'
 
 function Main() {
-    const [activeIndex,setActiveIndex]=useState("") 
+    const [activeIndex,setActiveIndex]=useState(false) 
     console.log(activeIndex,"CTIVEEEE")
 
-    const handleClick = (each) => {
-        setActiveIndex(each)
-            
-    }
+    // const handleClick = (each) => {
+    //     setActiveIndex(each)
+        
+    // }
   return (
     <div className='container'>
         <center>
@@ -16,9 +16,9 @@ function Main() {
             {
                 data.map((each,index) => 
                     <>
-                    <h2 onClick={() => handleClick(each) } className='question'>{each.Q }{each === activeIndex ? "👇" : "👆"}</h2>
+                    <h2 onClick={()=>setActiveIndex( activeIndex === index  ? false : index)} className='question'>{each.Q }{index === activeIndex ? "👇" : "👆"}</h2>
                     {
-                        each === activeIndex &&  <p className='answer'>{each.A }👆</p> 
+                        index === activeIndex ?  <p className='answer'>{each.A }👆</p> : ""
 
                     }
                     
